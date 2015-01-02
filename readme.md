@@ -20,8 +20,11 @@
 简单的使用指南：
 
 1、安装mongodb后，创建数据库`pastlink`，并为数据库设置用户和密码。
+
 2、在`ptool.py`的`db.authenticate('username', 'password')`处修改用户和密码。在`controller/tools/DB.py`中的`db = motor.MotorClient('mongodb://username:password@localhost:27017/pastlink').pastlink`处修改用户和密码。
+
 3、使用`ptool.py`中的`init_db()`函数初始化数据库，使用`add_user()`函数添加一个用户（pastlink的用户）。
+
 4、执行：
 
 	$ python server.py
