@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>逛一逛 - Pastlink</title>
+    <link rel="stylesheet" href="{{ static_url('css/style.css') }}"/>
+
+    <link rel="stylesheet" type="text/css" href="{{ static_url('semantic/css/semantic.css') }}">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700'
+          rel='stylesheet' type='text/css'>
+    <script src="{{ static_url('js/jquery-2.1.1.min.js') }}"></script>
+    <script src="{{ static_url('semantic/javascript/semantic.js') }}"></script>
+    <script src="{{ static_url('js/explore.js') }}"></script>
+    <script src="{{ static_url('js/check.ie.js') }}"></script>
+</head>
+
+<body>
+
+<div class="ui inverted page teal grid stackable relaxed feature segment"
+     style="padding-top: 1.5rem;padding-bottom: 1.5rem;">
+    <div class="ui row">
+        <div class="one wide column"></div>
+        <div class="fourteen wide column">
+            <div class="ui transparent menu">
+                <div class="container">
+                    <a class="launch item"><i class="icon list layout"></i> Pastlink</a>
+                    <a class="launch item" href="/explore">逛一逛</a>
+
+                    <div class="right menu">
+
+                        {% if login == True %}
+                        <a class="item" href="/u/{{ _(current_login_user_info['name']) }}">
+                            {{ _(current_login_user_info['name']) }}
+                        </a>
+                        {% end %}
+
+                        {% if login == False %}
+                        <div class="item">
+                            <a class="ui teal button" href="/login">登录</a>
+                            <a class="ui teal button" href="/register">注册</a>
+                        </div>
+                        {% end %}
+                        {% if login == True %}
+                        <div class="ui simple dropdown item">
+                            <i class="icon setting"></i>
+
+                            <div class="theme menu">
+                                <a class="item" href="/profile">个人信息</a>
+
+                                <a class="item" href="/logout">退出</a>
+                            </div>
+                        </div>
+                        {% end %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui inverted page teal grid stackable relaxed feature segment"
+     style="padding-top: 1.5rem;padding-bottom: 3.5rem">
+    <div class="row">
+        <div class="one wide column">
+        </div>
+        <div class="four wide column">
+
+            <div class="ui vertical menu" style="width: auto">
+                <div class="header item">
+                    逛一逛
+                </div>
+                <a class="item" onclick="display('hot-topics')">
+                    热门话题
+                </a>
+                <a class="item" onclick="display('new-topics')">
+                    最新话题
+                </a>
+                <a class="item" onclick="display('hot-links')">
+                    热门链接
+                </a>
+                <a class="item" onclick="display('new-links')">
+                    最新链接
+                </a>
+                <div class="header item">
+                    搜索
+                </div>
+                <div class="item">
+                    <div class="ui input"><input type="text" placeholder="Search..."></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="ten wide column" style="padding-left: 0%">
+            <div id="hot-topics" class="ui piled segment" style="margin: 0em 0em;">
+                <h2>热门话题</h2>
+                <div class="ui divided  selection list">
+                    {% for topic in hot_topics %}
+                    <a  class="topic item" style="padding-top:1rem; padding-bottom: 1rem;"
+                            href="/topic/{{ topic['hashid'] }}">
+                        <div class="right floated date"></div>
+                        <div class="description">
+                            {{ _(topic['title']) }}
+                        </div>
+                    </a>
+                    {% end %}
+                </div>
+            </div>
+            <div id="new-topics" class="ui piled segment" style="display: none; margin: 0em 0em;">
+                <h2>最新话题</h2>
+                <div  class="ui divided  selection list">
+                    {% for topic in new_topics %}
+                    <a  class="topic item" style="padding-top:1rem; padding-bottom: 1rem;"
+                            href="/topic/{{ topic['hashid'] }}">
+                        <div class="right floated date"></div>
+                        <div class="description">
+                            {{ _(topic['title']) }}
+                        </div>
+                    </a>
+                    {% end %}
+                </div>
+            </div>
+
+            <div id="hot-links" class="ui piled segment" style="display: none; margin: 0em 0em;">
+                <h2>热门链接</h2>
+                <div class="ui divided  selection list">
+                    {% for link in hot_links %}
+                    <a  class="topic item" style="padding-top:1rem; padding-bottom: 1rem;"
+                            href="/link/{{ link['hashid'] }}">
+                        <div class="right floated date">
+
+                        </div>
+                        <div class="description">
+                            {{ _(link['title']) }}
+                        </div>
+                    </a>
+                    {% end %}
+                </div>
+                <div class="ui divider"></div>
+            </div>
+            <div id="new-links" class="ui piled segment" style="display: none; margin: 0em 0em;">
+                <h2>最新链接</h2>
+                <div  class="ui divided  selection list">
+                    {% for link in new_links %}
+                    <a  class="topic item" style="padding-top:1rem; padding-bottom: 1rem;"
+                            href="/link/{{ link['hashid'] }}">
+                        <div class="right floated date">
+
+                        </div>
+                        <div class="description">
+                            {{ _(link['title']) }}
+                        </div>
+                    </a>
+                    {% end %}
+                </div>
+            </div>
+        </div>
+
+        <div class="one wide column">
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

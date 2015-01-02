@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+    <title>登录 - Pastlink</title>
+    <link rel="stylesheet" href="{{ static_url('css/style.css') }}"/>
+
+    <link rel="stylesheet" type="text/css" href="{{ static_url('semantic/css/semantic.css') }}">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700'
+          rel='stylesheet' type='text/css'>
+    <script src="{{ static_url('js/jquery-2.1.1.min.js') }}"></script>
+    <script src="{{ static_url('semantic/javascript/semantic.js') }}"></script>
+    <script src="{{ static_url('js/index.js') }}"></script>
+    <script src="{{ static_url('js/check.ie.js') }}"></script>
+</head>
+
+<body>
+
+<div class="ui inverted page teal grid stackable relaxed feature segment"
+     style="padding-top: 1.5rem;padding-bottom: 1.5rem;">
+    <div class="ui row">
+        <div class="one wide column"></div>
+        <div class="fourteen wide column">
+            <div class="ui transparent menu">
+                <div class="container">
+                    <a class="launch item"><i class="icon list layout"></i> Pastlink</a>
+                    <a class="launch item" href="/explore">逛一逛</a>
+
+                    <div class="right menu">
+                        <div class="vertically fitted borderless item">
+                        </div>
+
+                        <div class="item">
+                            <a class="ui teal button" href="/login">登录</a>
+                            <a class="ui teal button" href="/register">注册</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui inverted page teal grid stackable relaxed feature segment"
+     style="padding-top: 3.5rem;padding-bottom: 3.5rem">
+    <div class="row">
+        <div class="four wide column">
+        </div>
+        <div class="eight wide column">
+            <div class="ui secondary form segment">
+                <h3 class="ui header">登录</h3>
+
+                <p>在这里开始Pastlink之旅</p>
+
+                <form method="post">
+                    <div class="field">
+                        <div class="ui left labeled icon input">
+                            <input id="email" name="email" type="text" placeholder="Email">
+                            <i class="user icon"></i>
+
+                            <div class="ui corner teal label">
+                                <i class="icon asterisk"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left labeled icon input">
+                            <input id="password" type="password" placeholder="password">
+                            <i class="lock icon"></i>
+
+                            <div class="ui corner label">
+                                <i class="icon asterisk"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% raw xsrf_form_html() %}
+						<div id="error-message" class="ui error message"></div>
+						<div id="login" class="ui fluid positive submit button">Login</div>
+                </form>
+                <div class="ui icon message">
+                    <i class="info icon"></i>
+
+                    <div class="content">
+                        <p>离开时别忘了退出登录。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

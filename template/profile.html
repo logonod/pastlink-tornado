@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>Profile - Pastlink</title>
+    <link rel="stylesheet" href="{{ static_url('css/style.css') }}"/>
+
+    <link rel="stylesheet" type="text/css" href="{{ static_url('semantic/css/semantic.css') }}">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700'
+          rel='stylesheet' type='text/css'>
+    <script src="{{ static_url('js/jquery-2.1.1.min.js') }}"></script>
+    <script src="{{ static_url('semantic/javascript/semantic.js') }}"></script>
+    <script src="{{ static_url('js/profile.js') }}"></script>
+    <script src="{{ static_url('js/check.ie.js') }}"></script>
+</head>
+
+<body>
+
+<div class="ui inverted page teal grid stackable relaxed feature segment"
+     style="padding-top: 1.5rem;padding-bottom: 1.5rem;">
+    <div class="ui row">
+        <div class="one wide column"></div>
+        <div class="fourteen wide column">
+            <div class="ui transparent menu">
+                <div class="container">
+                    <a class="launch item"><i class="icon list layout"></i> Pastlink</a>
+                    <a class="launch item" href="/explore">逛一逛</a>
+
+                    <div class="right menu">
+
+
+                        <a class="item" href="/u/{{ _(current_login_user_info['name']) }}">
+                            {{ _(current_login_user_info['name']) }}
+                        </a>
+
+
+                        <div class="ui simple dropdown item">
+                            <i class="icon setting"></i>
+
+                            <div class="theme menu">
+                                <a class="item" href="/profile">个人信息</a>
+
+                                <a class="item" href="/logout">退出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui inverted page teal grid stackable relaxed feature segment"
+     style="padding-top: 1.5rem;padding-bottom: 3.5rem">
+    <div class="row">
+        <div class="one wide column">
+        </div>
+        <div class="four wide column">
+
+            <div class="ui vertical menu" style="width: auto">
+                <div class="header item">
+                    {{ _(current_login_user_info['name']) }}
+                </div>
+                <a class="item" href="/u/{{ _(current_login_user_info['name']) }}">
+                    所有话题
+                </a>
+                <a class="item" href="/new/topic">
+                    添加话题+
+                </a>
+                <a class="item">
+                    关注
+                </a>
+
+                <div class="item">
+                    收藏
+                    <div class="menu">
+                        <a class="item">话题</a>
+                        <a class="item">链接</a>
+                    </div>
+                </div>
+
+                <div class="header item">
+                    搜索
+                </div>
+                <div class="item">
+                    <div class="ui input"><input type="text" placeholder="Search..."></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="ten wide column" style="padding-left: 0%">
+            <div class="ui piled segment" style="">
+                <div class="ui orange ribbon label">个人信息</div>
+                <h2></h2>
+
+                <div class="ui  stacked segment">
+                    <p>用户名：{{ _(current_login_user_info['name']) }}</p>
+                    <p>邮箱：{{ _(current_login_user_info['email']) }}</p>
+                </div>
+                <div class="ui red ribbon label">修改密码</div>
+                <div class="ui form">
+
+                    <div class="field">
+                        <label class="ui inverted">旧密码：</label>
+                        <div class="ui input">
+                            <input id="old-password" type="password">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="ui inverted">新密码：</label>
+                        <div class="ui input">
+                            <input id="new-password-1" type="password">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="ui inverted">重新输入新密码：</label>
+                        <div class="ui input">
+                            <input id="new-password-2" type="password">
+                        </div>
+                    </div>
+                    {% raw xsrf_form_html() %}
+                    <div id="error-message" class="ui error message"></div>
+                    <div id="modify-password" class="ui black fluid button" >更新</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="one wide column">
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

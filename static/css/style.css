@@ -1,0 +1,10 @@
+body {
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif /*rtl:prepend:"Droid Arabic Kufi","Droid Sans", */;
+    /*background: #FCFCFC url("../img/bg.jpg") repeat;*/
+    background-color: #00B5AD !important;
+    margin: 0px;
+    padding: 0px;
+
+    text-rendering: optimizeLegibility;
+    min-width: 320px;
+}
